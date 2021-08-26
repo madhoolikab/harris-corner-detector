@@ -33,3 +33,14 @@ bc = smoothened_grad_x_y * smoothened_grad_x_y
 trace_matrix = smoothened_grad_x_square + smoothened_grad_y_square
 trace_matrix_square = trace_matrix * trace_matrix
 det_J = ad-bc
+
+# Computing the response by: det(J) - k Trace(M)^2, where k is an empirically chosen value
+k = 0.1
+corner_matrix = (-k * trace_matrix_square) + det_J
+
+# Indicate corner pixels in red
+img1[corner_matrix > k] = [255, 0, 0] 
+
+fig, (ax1, ax2) = plt.subplots(1, 2)
+ax1.imshow(img, cmap = 'gray')
+ax2.imshow(img1)
