@@ -1,6 +1,8 @@
 from skimage import io
+import numpy as np
 from scipy.ndimage import gaussian_filter
 from scipy.signal import convolve2d
+from matplotlib import pyplot as plt
 
 img = io.imread('PCB.jpg', as_gray = True)
 img1 = io.imread('PCB.jpg') # placeholder to indicate the corners later
