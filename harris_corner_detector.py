@@ -37,7 +37,7 @@ trace_matrix_square = trace_matrix * trace_matrix
 det_J = ad-bc
 
 # Computing the response by: det(J) - k Trace(M)^2, where k is an empirically chosen value
-k = 0.1
+k = 0.05
 corner_matrix = (-k * trace_matrix_square) + det_J
 
 # Indicate corner pixels in red
@@ -45,4 +45,6 @@ img1[corner_matrix > k] = [255, 0, 0]
 
 fig, (ax1, ax2) = plt.subplots(1, 2)
 ax1.imshow(img, cmap = 'gray')
+ax1.set_title("Input Image")
 ax2.imshow(img1)
+ax2.set_title("Result")
